@@ -65,7 +65,10 @@ not in memory.
 Run on EVERY take before it enters the cut:
 
 - **Per-second RMS windows** (ffmpeg `astats=reset=1`), speech threshold ≈ -38 dB — an
-  overall mean hides an 8-second-silence take (this exact failure happened).
+  overall mean hides an 8-second-silence take (this exact failure happened). The gate
+  catches it only when run with `--min-speech <expected line seconds>` (the default 0
+  passes any take with one speech window); mid-take gaps show in `speech_windows` and
+  `speech_span`.
 - Span check: speech must cover the expected line span; leading/trailing silence is
   trimmed and re-measured, not "accepted with a note".
 - Loudness report per take (integrated LUFS) so takes are compared like-for-like; final
