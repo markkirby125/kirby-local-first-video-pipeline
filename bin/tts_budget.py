@@ -122,7 +122,7 @@ def main():
                       file=sys.stderr)
                 sys.exit(2)
         missing = [k for k, v in dict(engine=a.engine, voice=a.voice, take=a.take,
-                                      result=a.result, rms_qa=a.rms_qa).items() if v in (None, "")]
+                                      result=a.result, rms_qa=a.rms_qa, file=a.file).items() if v in (None, "")]
         if missing:
             print(f"log needs --{(' --'.join(missing)).replace('_', '-')}", file=sys.stderr); sys.exit(2)
         entry = {"date": a.date, "line": a.line_id, "engine": a.engine,

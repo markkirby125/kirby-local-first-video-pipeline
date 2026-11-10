@@ -49,8 +49,11 @@ audits provenance. Thumbnail assists would be MOSS first.
 
 1. Copy the two templates from `assets/` into the channel repo as `route-table.json` and
    `tts-ledger.json`; fill the route table
-   (local engines only — the templates cannot declare cloud).
-2. Add the channel's loudness target and review-gate command to its route table notes
+   (local engines only — the templates cannot declare cloud). The two gate scripts stay in
+   this skill: run `bin/audio_qa.py` and `bin/tts_budget.py` by their path in the installed
+   skill folder (or copy `bin/` into the channel repo); a missing script means the gate did
+   not run, so stop.
+2. Fill the route table's `loudness_target` and `review_gate` fields
    (house default if none: −14 LUFS / TP ≤ −1.0 dBTP).
 3. First video: state provenance in the delivery (expected: zero cloud — permanently).
 4. Deviations are not expected; any change of *local* route gets a dated note — the

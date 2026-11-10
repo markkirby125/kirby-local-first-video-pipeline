@@ -34,7 +34,7 @@ Declared before production starts; the only place routing is decided. Template:
 {
   "project": "reference-channel",
   "declared": "2026-11-07",
-  "tts": { "narration": "moss-nano-tts", "character_voice": "moss-voice", "scratch": "moss-nano-tts", "cloud_tts": "none" },
+  "tts": { "narration": "moss-nano-tts", "character_voice": "moss-voice", "scratch": "moss-nano-tts" },
   "sfx": { "primary": "moss-sfx-v2", "rapid": "sa3-sfx" },
   "transcription": "moss-transcribe",
   "stills": { "default": "moss" },

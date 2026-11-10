@@ -37,7 +37,7 @@ summarised in this skill.
 | Asset Variable | Data Type | Role |
 |---|---|---|
 | `@route_table` | Data (per project) | Stage→engine choices, declared up front; the only place routing is decided. Template in `assets/route-table.template.json`. Cloud engines are never declared. |
-| `@tts_ledger` | Data (per project, committed) | Every audio generation: date, engine, voice/clone ref, line id, take, QA result. Appended immediately after QA, with result and rms_qa recorded; audited after. Template in `assets/tts-ledger.template.json`. |
+| `@tts_ledger` | Data (per project, committed) | Every audio generation: date, engine, voice/clone ref, line id, take, QA result, file path. Appended immediately after QA, with result and rms_qa recorded; audited after. Template in `assets/tts-ledger.template.json`. |
 | `@retake_rule` | Rule | Two failed takes on a line in one day ⇒ change the input (text, voice description, reference clip), never the policy. |
 | `@qa_gates` | Checklist | Audio QA (`bin/audio_qa.py`) on every take; moss-transcribe duration verification against the script; the project's own visual review gate on every video. |
 
