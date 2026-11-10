@@ -66,11 +66,13 @@ Run on EVERY take before it enters the cut:
 
 - **Per-second RMS windows** (ffmpeg `astats=reset=1`), speech threshold ≈ -38 dB — an
   overall mean hides an 8-second-silence take (this exact failure happened). The gate
-  catches it only when run with `--min-speech <expected line seconds>` (the default 0
-  passes any take with one speech window); mid-take gaps show in `speech_windows` and
-  `speech_span`.
-- Span check: speech must cover the expected line span; leading/trailing silence is
-  trimmed and re-measured, not "accepted with a note".
+  catches it only when run with `--min-speech <expected speech seconds>` (the default 0
+  passes any take with one speech window). The script counts whole 1 s windows above the
+  threshold, so set it 1-2 s below the line length to allow pauses; mid-take gaps show in
+  `speech_windows` and `speech_span`.
+- Span check (manual: the script reports `speech_span` and leading/trailing silence but
+  does not trim or test them): reject a take whose span falls short of the line; trim
+  leading/trailing silence with ffmpeg and re-run the gate, never "accept with a note".
 - Loudness report per take (integrated LUFS) so takes are compared like-for-like; final
   mix normalises to the channel target in assembly.
 - **VLC trap**: m4a and high-samplerate stereo exports decode near-silently in VLC and
