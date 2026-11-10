@@ -11,7 +11,6 @@
     "moss-transcribe": { "route": "~/.local/bin/moss-transcribe (0.9B ASR + diarization; .ass/.srt, 10 ms timestamps; duration verification)", "roles": [] },
     "kokoro": { "route": "legacy scratch: <path to your kokoro render_narration.py> (bm_george, 24 kHz mono); new projects scratch with moss-nano-tts", "roles": [] }
   },
-  "entries": [
-    { "date": "YYYY-MM-DD", "line": "<ep-role-NNN>", "engine": "moss-nano-tts", "voice": "<preset | reference clip | description>", "take": 1, "result": "PASS", "rms_qa": "pass", "file": "<path.wav>" }
-  ]
+  "entries": [],
+  "_example_entry": { "date": "YYYY-MM-DD", "line": "<ep-role-NNN>", "engine": "moss-nano-tts", "voice": "<preset | reference clip | description>", "take": 1, "result": "PASS", "rms_qa": "pass", "file": "<path.wav>" }
 }

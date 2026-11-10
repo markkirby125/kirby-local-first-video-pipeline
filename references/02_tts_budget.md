@@ -48,7 +48,9 @@ Committed as text. Template: `assets/tts-ledger.template.json`; entries:
 The ledger is a **provenance + QA record**, not a budget: it proves every sound in the
 cut came from a route the table names, and it feeds the retake rule.
 `bin/tts_budget.py` (named for its budget-era origin) reads it: `summary` prints today's
-takes and QA failures; `next LINE_ID --role …` picks the role's engine;
+takes and QA failures; `next LINE_ID --role narration|scratch|subject|sfx|ui-sfx` reports the house-default
+engine for that role and today's fails on the line (it does not read the route table;
+where the project's route table differs, the route table wins);
 `log` **refuses to record a cloud engine** — the out-of-policy rule is enforced in code,
 not in memory.
 

@@ -3,8 +3,8 @@
 ## Audio
 
 - `bin/audio_qa.py <file>` on **every** take before acceptance (per-second RMS,
-  speech-span, loudness — see `02`). FAIL = re-roll with a changed input per the retake
-  rule, never "accept with a note".
+  speech-span, loudness — see `02`). FAIL = re-roll; after two failed takes on a line in
+  one day, change the input per the retake rule. Never "accept with a note".
 - **Duration verification:** run `moss-transcribe` on the assembled narration track and
   check its measured timestamps against the script cuts — the machine-checkable
   substitute for "listening".

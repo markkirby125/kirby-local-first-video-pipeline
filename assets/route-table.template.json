@@ -10,7 +10,6 @@
   "assembly": "ffmpeg-local",
   "loudness_target": { "lufs": -14, "truepeak_dbtp_max": -1.0, "_source": "<channel's own spec, or the house default>" },
   "review_gate": "<the channel's own final-export review command>",
-  "deviations": [
-    { "date": "YYYY-MM-DD", "stage": "<tts|sfx|stills|assembly>", "from": "<local route>", "to": "<local route>", "reason": "<named reason>" }
-  ]
+  "deviations": [],
+  "_example_deviation": { "date": "YYYY-MM-DD", "stage": "<tts|sfx|stills|assembly>", "from": "<local route>", "to": "<local route>", "reason": "<named reason>" }
 }

@@ -5,8 +5,9 @@ numbers were measured and dated. There are no quotas to track — but local serv
 fail in local ways, and the rule that keeps this table honest is unchanged:
 
 > **Read the error, not the doc.** Attempt the request; on failure read the actual error
-> (VRAM cold-load timeouts, missing weights, GPU OOM), record it in the ledger, and fix
-> the route. Never assume a stored fact is still true. Refresh this file when observation
+> (VRAM cold-load timeouts, missing weights, GPU OOM), record it with the date in the
+> delivery note (the ledger logs only takes that produced a file; a route change also gets
+> a dated deviation whose reason names the error), and fix the route. Never assume a stored fact is still true. Refresh this file when observation
 > contradicts it (then update the number and date).
 
 ## Measured local capacity (planning defaults)
