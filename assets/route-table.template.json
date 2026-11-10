@@ -1,0 +1,16 @@
+{
+  "_comment": "Copy to the channel repo as route-table.json. Declared before production; the ONLY place routing is decided. 100% local: cloud TTS and generative video models are OUT OF POLICY (2026-11-07) and are never declared here - not as fallbacks, not behind gates. Changes between local routes get a dated note, never a silent switch.",
+  "project": "<channel>",
+  "declared": "YYYY-MM-DD",
+  "tts": { "narration": "moss-nano-tts", "character_voice": "moss-voice", "scratch": "moss-nano-tts", "cloud_tts": "none" },
+  "sfx": { "primary": "moss-sfx-v2", "rapid": "sa3-sfx" },
+  "transcription": "moss-transcribe",
+  "stills": { "default": "moss" },
+  "video": { "default": "none-needed", "policy": "no-generative-video-models" },
+  "assembly": "ffmpeg-local",
+  "loudness_target": { "lufs": -14, "truepeak_dbtp_max": -1.0, "_source": "<channel's own spec, or the house default>" },
+  "review_gate": "<the channel's own final-export review command>",
+  "deviations": [
+    { "date": "YYYY-MM-DD", "stage": "<tts|sfx|stills|assembly>", "from": "<local route>", "to": "<local route>", "reason": "<named reason>" }
+  ]
+}
