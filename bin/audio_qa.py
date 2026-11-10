@@ -31,7 +31,7 @@ def rms_windows(path, threshold_db):
     if probe.stdout.strip().isdigit():
         sr = int(probe.stdout.strip())
     r = run(["ffmpeg", "-hide_banner", "-nostats", "-i", path, "-af",
-             f"asetnsamples=n={sr},astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=-",
+             f"asetnsamples=n={sr}:p=0,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=-",
              "-f", "null", "-"])
     if r.returncode != 0:
         print(f"FAIL decode: ffmpeg cannot read {path}\n{r.stderr[-400:]}", file=sys.stderr)

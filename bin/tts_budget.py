@@ -13,6 +13,7 @@ Usage:
   tts_budget.py LEDGER summary [--date YYYY-MM-DD]
   tts_budget.py LEDGER next LINE_ID --role narration|subject|sfx|ui-sfx|scratch
   tts_budget.py LEDGER log --line-id ID --engine E --voice V --take N --result R --rms-qa pass --file F [--date ...]
+    (--file is required for a PASS; a failed attempt with no output may omit it)
     (--engine is validated against the allowlist and normalised: case and underscores)
 
 Exit 0 on success; 2 on ledger/argument/policy errors. Ledger format: see
@@ -107,7 +108,9 @@ def main():
             note = f"{fails} failed take(s) logged today for this line on {engine}"
         print(json.dumps({"line": a.line_id, "role": a.role, "engine": engine,
                           "takes_today": len(line_today), "fails_today": fails,
-                          "note": note}, indent=2))
+                          "note": note,
+                          "engine_source": "house default per role; the project's route table wins where it differs"},
+                         indent=2))
         return
 
     if a.cmd == "log":
@@ -122,7 +125,10 @@ def main():
                       file=sys.stderr)
                 sys.exit(2)
         missing = [k for k, v in dict(engine=a.engine, voice=a.voice, take=a.take,
-                                      result=a.result, rms_qa=a.rms_qa, file=a.file).items() if v in (None, "")]
+                                      result=a.result, rms_qa=a.rms_qa).items() if v in (None, "")]
+        # a PASS needs its media path (provenance); a failed attempt may have produced no file
+        if (a.result or "").upper() == "PASS" and not a.file:
+            missing.append("file")
         if missing:
             print(f"log needs --{(' --'.join(missing)).replace('_', '-')}", file=sys.stderr); sys.exit(2)
         entry = {"date": a.date, "line": a.line_id, "engine": a.engine,
