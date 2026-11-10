@@ -49,7 +49,7 @@ summarised in this skill.
 | [`02_tts_budget.md`](02_tts_budget.md) | Any narration/dialogue/SFX | The MOSS audio roles, ledger discipline, voice locks, the retake rule. |
 | [`03_visual_routes.md`](03_visual_routes.md) | Stills or motion | MOSS-first stills, the no-video-models policy, insert graphics. |
 | [`04_qa_and_delivery.md`](04_qa_and_delivery.md) | Before anything ships | Audio QA, duration verification, provenance audit, git hygiene, delivery notes. |
-| [`05_channel_integrations.md`](05_channel_integrations.md) | Starting a channel job | Per-channel wiring: Fast Evidence (reference), pixel-art football channel, sci-fi microdrama + tabletop-scenery channels (legacy), stickman. |
+| [`05_channel_integrations.md`](05_channel_integrations.md) | Starting a channel job | Per-channel wiring: the reference channel, pixel-art football channel, sci-fi microdrama + tabletop-scenery channels (legacy), stickman. |
 
 ## 🛑 When NOT to Use This Skill
 

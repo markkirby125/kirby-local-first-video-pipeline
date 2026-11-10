@@ -9,7 +9,7 @@
   check its measured timestamps against the script cuts — the machine-checkable
   substitute for "listening".
 - Final mix measured, not heard: loudness-normalise to the channel target. House default
-  is **−14 LUFS / TP ≤ −1.0 dBTP** (Fast Evidence); channels with their own spec keep
+  is **−14 LUFS / TP ≤ −1.0 dBTP** (the reference channel); channels with their own spec keep
   their own numbers.
 - Listen-backs in mpv/ffmpeg or WAV copies, never VLC-alone verdicts (decode trap, `02`).
 

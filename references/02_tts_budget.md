@@ -25,7 +25,7 @@ or re-measured duration (verified with `moss-transcribe`).
 
 - **One fixed voice per character per season.** The lock lives in the project's voice
   bible/cast file, not in per-line code: narration locks to the project's narrator
-  reference clip (Fast Evidence's is a forensic-narrator sample; `Junhao` is the clean
+  reference clip (the reference channel's is a forensic-narrator sample; `Junhao` is the clean
   fallback preset); each character locks to one `moss-voice` description string.
 - Because every engine is local, acoustic continuity is permanent — the same reference
   clip or description reproduces the same voice in every episode, forever. Provider voice

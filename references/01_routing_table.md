@@ -32,7 +32,7 @@ Declared before production starts; the only place routing is decided. Template:
 
 ```json
 {
-  "project": "fast-evidence",
+  "project": "reference-channel",
   "declared": "2026-11-07",
   "tts": { "narration": "moss-nano-tts", "character_voice": "moss-voice", "scratch": "moss-nano-tts", "cloud_tts": "none" },
   "sfx": { "primary": "moss-sfx-v2", "rapid": "sa3-sfx" },

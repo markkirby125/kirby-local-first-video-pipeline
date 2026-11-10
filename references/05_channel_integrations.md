@@ -5,7 +5,7 @@ spec runs production; this layer decides where generation happens. Since 2026-11
 doctrine is local-only for every channel this skill wires; the two legacy cloud-era
 sections are kept as history, not as routes.
 
-## Fast Evidence — the reference implementation
+## The reference channel (reference implementation)
 
 Narration-led forensic explainer; the first full build on the local-only doctrine and
 this skill's integration test. Route table: `moss-nano-tts` narration (locked forensic
@@ -40,7 +40,7 @@ ceiling. Out of policy now; the local replacements: `moss-voice` for NPC/monster
 for session playbacks and campaign logs, the channel's own packaging script (−14 LUFS / −1.0 dBTP) as the
 local packaging floor.
 
-## Stickman channels (Offline Business zips)
+## Stickman channels
 
 Deterministic stickman rendering (stickman-shorts family) — local by design; this layer
 audits provenance. Thumbnail assists would be MOSS first.
