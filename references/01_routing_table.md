@@ -6,7 +6,8 @@ fail in local ways, and the rule that keeps this table honest is unchanged:
 
 > **Read the error, not the doc.** Attempt the request; on failure read the actual error
 > (VRAM cold-load timeouts, missing weights, GPU OOM), log the failed attempt in the
-> ledger (`--result FAIL`; `--file` may be omitted when no output was produced), name the
+> ledger (`--result FAIL --rms-qa fail` with the usual fields, full form in `02`; `--file`
+> may be omitted when no output was produced), name the
 > error in the delivery note (a route change also gets a dated deviation whose reason names
 > it), and fix the route. Never assume a stored fact is still true. Refresh this file when observation
 > contradicts it (then update the number and date).

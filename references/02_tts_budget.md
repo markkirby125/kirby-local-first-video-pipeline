@@ -52,6 +52,11 @@ path, e.g. `tts-ledger.json`) reads it: `summary` prints today's
 takes and QA failures; `next LINE_ID --role narration|scratch|subject|sfx|ui-sfx` reports the house-default
 engine for that role and today's fails on the line (it does not read the route table;
 where the project's route table differs, the route table wins);
+`next` roles map to route-table keys as: `narration` to `tts.narration`, `scratch` to
+`tts.scratch`, `subject` to `tts.character_voice`, `sfx` to `sfx.primary`, `ui-sfx` to
+`sfx.rapid`. Full `log` form (every take, pass or fail):
+`bin/tts_budget.py tts-ledger.json log --line-id ep02-014 --engine moss-voice --voice "<description>" --take 1 --result PASS --rms-qa pass --file voice/ep02/014-t1.wav`
+(a failed attempt uses `--result FAIL --rms-qa fail` and may omit `--file`).
 `log` **refuses to record a cloud engine** — the out-of-policy rule is enforced in code,
 not in memory.
 

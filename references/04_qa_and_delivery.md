@@ -4,7 +4,8 @@
 
 - `bin/audio_qa.py <file> --min-speech <expected line seconds>` on **every** take before
   acceptance (without `--min-speech` the "too little speech" FAIL cannot fire; per-second RMS,
-  speech-span, loudness — see `02`). FAIL = re-roll; after two failed takes on a line in
+  speech-span, loudness — see `02`). Log every take, pass or fail, with `bin/tts_budget.py … log`
+  (full form in `02`). FAIL = re-roll; after two failed takes on a line in
   one day, change the input per the retake rule. Never "accept with a note".
 - **Duration verification:** run `moss-transcribe` on the assembled narration track and
   check its measured timestamps against the script cuts — the machine-checkable

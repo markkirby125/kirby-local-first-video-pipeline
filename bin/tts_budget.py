@@ -133,6 +133,7 @@ def main():
             missing.append("file")
         if missing:
             print(f"log needs --{(' --'.join(missing)).replace('_', '-')}", file=sys.stderr); sys.exit(2)
+        a.result, a.rms_qa = a.result.upper(), a.rms_qa.lower()  # summary/next compare exact "PASS"/"pass"
         entry = {"date": a.date, "line": a.line_id, "engine": a.engine,
                  "voice": a.voice, "take": a.take, "result": a.result,
                  "rms_qa": a.rms_qa}
