@@ -2,7 +2,8 @@
 
 ## Audio
 
-- `bin/audio_qa.py <file>` on **every** take before acceptance (per-second RMS,
+- `bin/audio_qa.py <file> --min-speech <expected line seconds>` on **every** take before
+  acceptance (without `--min-speech` the "too little speech" FAIL cannot fire; per-second RMS,
   speech-span, loudness — see `02`). FAIL = re-roll; after two failed takes on a line in
   one day, change the input per the retake rule. Never "accept with a note".
 - **Duration verification:** run `moss-transcribe` on the assembled narration track and
