@@ -14,7 +14,7 @@ Usage:
   tts_budget.py LEDGER next LINE_ID --role narration|subject|sfx|ui-sfx|scratch
   tts_budget.py LEDGER log --line-id ID --engine E --voice V --take N --result R --rms-qa pass --file F [--date ...]
     (--file is required for a PASS; a failed attempt with no output may omit it)
-    (--engine is validated against the allowlist and normalised: case and underscores)
+    (--engine is validated against the allowlist and normalised: path prefix, case and underscores)
 
 Exit 0 on success; 2 on ledger/argument/policy errors. Ledger format: see
 assets/tts-ledger.template.json. Ledger is committed text; media never enters git.
@@ -71,6 +71,8 @@ def main():
     # parallel batch writers serialise instead of dropping each other's entries.
     lockf = None
     if a.cmd == "log":
+        if not os.path.isfile(a.ledger):
+            load(a.ledger)  # prints the "ledger not found" hint and exits 2 before any lock file
         lockf = open(a.ledger + ".lock", "w")
         fcntl.flock(lockf, fcntl.LOCK_EX)
     led = load(a.ledger)
@@ -118,7 +120,7 @@ def main():
             print("log needs a LINE_ID (positional or --line-id); unattributable entries break the retake rule", file=sys.stderr)
             sys.exit(2)
         if a.engine:
-            a.engine = a.engine.strip().lower().replace("_", "-")
+            a.engine = os.path.basename(a.engine.strip()).lower().replace("_", "-")
             if a.engine not in ALLOWED_ENGINES:
                 print(f"OUT OF POLICY (2026-11-07): engine '{a.engine}' is not callable in this pipeline. "
                       f"Allowed engines: {', '.join(sorted(ALLOWED_ENGINES))}.",

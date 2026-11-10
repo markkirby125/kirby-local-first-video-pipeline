@@ -49,7 +49,9 @@ audits provenance. Thumbnail assists would be MOSS first.
 
 1. Copy the two templates from `assets/` into the channel repo as `route-table.json` and
    `tts-ledger.json`; fill the route table
-   (local engines only — the templates cannot declare cloud). The two gate scripts stay in
+   (local engines only; the templates have no cloud fields, and the route table is checked
+   by manual audit, while the ledger is checked in code). Delete the `_example_*` keys
+   after copying. The two gate scripts stay in
    this skill: run `bin/audio_qa.py` and `bin/tts_budget.py` by their path in the installed
    skill folder (or copy `bin/` into the channel repo); a missing script means the gate did
    not run, so stop.
