@@ -6,8 +6,8 @@
   "engines": {
     "moss-nano-tts": { "route": "~/.local/bin/moss-nano-tts (CPU ONNX, 48 kHz stereo; -r <reference.wav> clone or -v <preset>)", "roles": ["narration", "scratch"] },
     "moss-voice": { "route": "~/.local/bin/moss-voice (GPU 1.7B, 24 kHz mono; -i <voice description>, zero-reference timbre)", "roles": ["subject"] },
-    "moss-sfx-v2": { "route": "~/.local/bin/moss-sfx-v2 (48 kHz stereo, <=30 s, cinematic sound design)", "roles": ["sfx"] },
-    "sa3-sfx": { "route": "~/.local/bin/sa3-sfx (44.1 kHz stereo, ~14 s per 4 s take, rapid/mechanical UI)", "roles": ["ui-sfx"] },
+    "moss-sfx-v2": { "route": "~/.local/bin/moss-sfx-v2 (48 kHz stereo, <=30 s, cinematic sound design and UI SFX; sole SFX tool, policy 2026-11-13)", "roles": ["sfx", "ui-sfx"] },
+    "sa3-sfx": { "route": "legacy: ~/.local/bin/sa3-sfx (not used for SFX, policy 2026-11-13)", "roles": [] },
     "moss-transcribe": { "route": "~/.local/bin/moss-transcribe (0.9B ASR + diarization; .ass/.srt, 10 ms timestamps; duration verification)", "roles": [] },
     "kokoro": { "route": "legacy scratch: <path to your kokoro render_narration.py> (bm_george, 24 kHz mono); new projects scratch with moss-nano-tts", "roles": [] }
   },

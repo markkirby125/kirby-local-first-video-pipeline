@@ -10,7 +10,7 @@ CHARACTER / SUBJECT VO  moss-voice       (GPU 1.7B, 24 kHz mono) — zero-refere
                                            from a text description (-i)
 CINEMATIC SFX           moss-sfx-v2      (48 kHz stereo, ≤30 s) — paper rustles, gavel
                                            strikes, document stamps, monitor bleeps
-RAPID / UI SFX          sa3-sfx          (44.1 kHz stereo) — mechanical clicks, transitions
+RAPID / UI SFX          moss-sfx-v2      (sole SFX tool, policy 2026-11-13) — mechanical clicks, transitions
 VERIFICATION            moss-transcribe  (0.9B) — timestamps, diarization, duration checks
 LEGACY SCRATCH          kokoro bm_george (24 kHz mono) — only where a project already uses
                                            it; new projects scratch with moss-nano-tts

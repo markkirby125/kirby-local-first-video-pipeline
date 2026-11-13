@@ -3,7 +3,7 @@
   "project": "<channel>",
   "declared": "YYYY-MM-DD",
   "tts": { "narration": "moss-nano-tts", "character_voice": "moss-voice", "scratch": "moss-nano-tts" },
-  "sfx": { "primary": "moss-sfx-v2", "rapid": "sa3-sfx" },
+  "sfx": { "primary": "moss-sfx-v2", "rapid": "moss-sfx-v2" },
   "transcription": "moss-transcribe",
   "stills": { "default": "moss" },
   "video": { "default": "none-needed", "policy": "no-generative-video-models" },

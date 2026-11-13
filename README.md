@@ -1,7 +1,7 @@
 # Local-First Video Pipeline 🎥🛡️
 
 > **SOP for producing narration-led video on a 100% local stack: the MOSS audio suite
-> (`moss-nano-tts` narration · `moss-voice` character VO · `moss-sfx-v2` / `sa3-sfx`
+> (`moss-nano-tts` narration · `moss-voice` character VO · `moss-sfx-v2` (only SFX tool)
 > sound design · `moss-transcribe` verification), MOSS MCP stills, coded ffmpeg/PIL
 > assembly. Cloud TTS (Gemini, ElevenLabs) and generative video models are OUT OF
 > POLICY — never called, no gates, no quotas.**
@@ -22,7 +22,7 @@ LOCAL APPS ONLY — every stage, unlimited
 │ moss-nano-tts   narration & host VO (CPU, 48 kHz)    │
 │ moss-voice      character / subject VO (GPU, 1.7B)   │
 │ moss-sfx-v2     cinematic sound design (48 kHz)      │
-│ sa3-sfx         rapid mechanical UI SFX (44.1 kHz)   │
+│ sa3-sfx         not used for SFX (policy 2026-11-13)  │
 │ moss-transcribe timestamps, diarization, duration QA │
 │ MOSS MCP        stills, plates, thumbs (local GPU)   │
 │ Chromium/PIL    inserts, captions, overlays          │

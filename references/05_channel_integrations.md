@@ -10,7 +10,7 @@ sections are kept as history, not as routes.
 Narration-led forensic explainer; the first full build on the local-only doctrine and
 this skill's integration test. Route table: `moss-nano-tts` narration (locked forensic
 narrator reference clip, `Junhao` as clean preset) → `moss-voice` expert/patient quotes →
-`moss-sfx-v2` cinematic stamps/gavels/bleeps + `sa3-sfx` UI clicks → `moss-transcribe`
+`moss-sfx-v2` stamps/gavels/bleeps/UI clicks (sole SFX tool, policy 2026-11-13) → `moss-transcribe`
 duration verification → MOSS stills → Chromium captions / PIL overlays → ffmpeg assembly
 → audio QA + provenance audit. No generative video. Masters −14 LUFS / −1.0 dBTP.
 

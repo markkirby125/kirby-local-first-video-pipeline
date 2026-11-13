@@ -31,7 +31,7 @@ ROLE_ENGINE = {
     "scratch": "moss-nano-tts",
     "subject": "moss-voice",       # GPU 1.7B, 24 kHz mono; zero-reference timbre from description
     "sfx": "moss-sfx-v2",          # cinematic, 48 kHz stereo, <=30 s
-    "ui-sfx": "sa3-sfx",           # rapid mechanical, 44.1 kHz stereo
+    "ui-sfx": "moss-sfx-v2",       # rapid mechanical, sole SFX tool (policy 2026-11-13)
 }
 # Cloud TTS/image/video removed 2026-11-07: anything not on the local suite is refused.
 ALLOWED_ENGINES = set(ROLE_ENGINE.values()) | {"moss-transcribe", "kokoro"}

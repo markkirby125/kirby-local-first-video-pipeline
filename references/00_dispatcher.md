@@ -15,7 +15,7 @@ summarised in this skill.
 | Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`) or a preset (`-v Junhao`) |
 | Character / subject / expert VO | **moss-voice** — GPU 1.7B, 24 kHz mono; zero-reference timbre from a text description (`-i`) |
 | Cinematic SFX & stingers | **moss-sfx-v2** — 48 kHz stereo, up to 30 s (paper rustles, gavel strikes, document stamps, monitor bleeps) |
-| Rapid / mechanical UI SFX | **sa3-sfx** — 44.1 kHz stereo, ~14 s per 4 s take (clicks, transitions) |
+| Rapid / mechanical UI SFX | **moss-sfx-v2** only (policy 2026-11-13). `sa3-sfx` is not used for SFX and is not a fallback; if `moss-sfx-v2` fails, stop and report to Paul. |
 | Timestamps, diarization, duration QA | **moss-transcribe** — 0.9B ASR + diarization, `.ass`/`.srt` with 10 ms timestamps |
 | Stills, plates, thumbnails | **MOSS MCP** (`moss-image:*` → SwarmUI on its default local port) — unlimited |
 | Insert graphics, captions, subs | Chromium `render.mjs` / the channel's own subtitle script / pixelkit / PIL |
@@ -61,7 +61,7 @@ summarised in this skill.
 ## Machine facts this skill depends on (verified on one local machine, 2026-11-07)
 
 - SwarmUI + ComfyUI on a local GPU (>= 16 GB VRAM), each on its default local port.
-- Global CLIs on `~/.local/bin`: `moss-nano-tts`, `moss-voice`, `moss-sfx-v2`, `moss-transcribe`, `sa3-sfx`. Call them directly; never activate virtualenvs manually.
+- Global CLIs on `~/.local/bin`: `moss-nano-tts`, `moss-voice`, `moss-sfx-v2`, `moss-transcribe` (`sa3-sfx` also exists but is not used for SFX; policy 2026-11-13). Call them directly; never activate virtualenvs manually.
 - `moss-nano-tts` runs purely on CPU (ONNX, 8 threads, 0 MB VRAM) — it leaves VRAM free for image generation. Prefer it for narration for that reason alone.
 - **Gotcha:** the first MOSS MCP image call after idle loads the model into VRAM and the MCP call may time out at 30 s while SwarmUI keeps generating — poll the output file; the image lands.
 - **Listen in mpv/ffmpeg, never VLC-alone:** m4a and high-samplerate stereo exports can decode near-silently in VLC while ffmpeg/mpv read them correctly. `bin/audio_qa.py` uses ffmpeg and is the authority.
