@@ -35,10 +35,10 @@ Nano Banana, Flow/Veo, LTX-Video — motion is coded, not generated.
 ## What's in the box
 
 - `references/01` — measured local capacity table + the read-the-error rule + route-table format
-- `references/02` — the MOSS audio roles, voice locks, the retake rule, ledger format, audio QA
+- `references/02` — the MOSS audio roles, voice locks (`bible/voices.md`), the retake rule, ledger format, audio QA
 - `references/03` — MOSS-first stills; the no-generative-video policy; the coded-motion approach (the recipes live in the channel project)
-- `references/04` — QA gates: per-second-RMS audio QA, duration verification, provenance audit, git hygiene
-- `references/05` — per-channel wiring: the reference channel, pixel-art football channel, sci-fi microdrama + tabletop-scenery channels (legacy history), stickman
+- `references/04` — QA gates: pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` check (with inline schemas for `bible/claims.md`, `bible/pronunciation.md` and `bible/voices.md`), `moss-transcribe` proper-noun/duration verification, per-second-RMS audio QA, provenance audit, git hygiene
+- `references/05` — per-channel wiring & downstream channel-metadata handoff: the reference channel, pixel-art football channel, sci-fi microdrama + tabletop-scenery channels (legacy history), stickman
 - `bin/audio_qa.py` — the audio gate that stops bad takes (stdlib + ffmpeg only)
 - `bin/tts_budget.py` — ledger reader/writer; refuses any engine outside the local suite
 - `assets/` — route-table and TTS-ledger templates (local-only shapes)

@@ -11,7 +11,7 @@ summarised in this skill.
 
 | Stage | Route (always local, unlimited) |
 |---|---|
-| Script / shot list / narration text | Agent, no media generated |
+| Script / shot list / narration text | Agent, no media generated; verifiable claims logged in `bible/claims.md` before scripting (re-checked before TTS), spoken proper nouns in `bible/pronunciation.md` before TTS |
 | Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`) or a preset (`-v Junhao`) |
 | Character / subject / expert VO | **moss-voice** — GPU 1.7B, 24 kHz mono; zero-reference timbre from a text description (`-i`) |
 | Cinematic SFX & stingers | **moss-sfx-v2** — 48 kHz stereo, up to 30 s (paper rustles, gavel strikes, document stamps, monitor bleeps) |
@@ -20,7 +20,7 @@ summarised in this skill.
 | Stills, plates, thumbnails | **MOSS MCP** (`moss-image:*` → SwarmUI on its default local port) — unlimited |
 | Insert graphics, captions, subs | Chromium `render.mjs` / the channel's own subtitle script / pixelkit / PIL |
 | Assembly, repair, packaging | ffmpeg + PIL overlays — **coded motion only, no video models** |
-| QA | Per-second RMS audio QA (`bin/audio_qa.py`) + moss-transcribe duration verification |
+| QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
 
 ## 🚫 Out of policy (removed 2026-11-07, house-wide)
 
@@ -36,10 +36,12 @@ summarised in this skill.
 
 | Asset Variable | Data Type | Role |
 |---|---|---|
-| `@route_table` | Data (per project) | Stage→engine choices, declared up front; the only place routing is decided. Template in `assets/route-table.template.json`. Cloud engines are never declared. |
+| `@route_table` | Data (per project) | Stage→engine choices, declared up front; the only place routing is decided. Template in `assets/route-table.template.json` (Markdown bible schemas for `bible/claims.md`, `bible/pronunciation.md`, and `bible/voices.md` live inline in `04_qa_and_delivery.md`). Cloud engines are never declared. |
 | `@tts_ledger` | Data (per project, committed) | Every audio generation: date, engine, voice/clone ref, line id, take, QA result, file path. Appended immediately after QA, with result and rms_qa recorded; audited after. Template in `assets/tts-ledger.template.json`. |
 | `@retake_rule` | Rule | Two failed takes on a line in one day ⇒ change the input (text, voice description, reference clip), never the policy. |
-| `@qa_gates` | Checklist | Audio QA (`bin/audio_qa.py`) on every take; moss-transcribe duration verification against the script; the project's own visual review gate on every video. |
+| `@qa_gates` | Checklist | Required pre-production `bible/claims.md` fact/claim ledger; required pre-TTS `bible/pronunciation.md` proper-noun respelling ledger (for spoken proper nouns); post-synthesis `moss-transcribe` proper-noun check; audio QA (`bin/audio_qa.py`) on every take; `moss-transcribe` duration verification against the script; the project's own visual review gate on every video. |
+| `@claims_ledger` | Data (per project, `bible/claims.md`) | Primary-source table (`\| claim \| primary_source_url \| quoted_passage \| verified_by \| verified_date \|`) backing every factual claim before scripting/TTS. Schema defined inline in `04_qa_and_delivery.md`. |
+| `@pronunciation_ledger` | Data (per project, `bible/pronunciation.md`) | Engine-readable proper-noun respelling table (`\| proper_noun \| respelling \| approved_by \| notes \|`, distinct from `bible/voices.md`) before TTS. Schema defined inline in `04_qa_and_delivery.md`. |
 
 ## 🧭 Operational Routing Matrix
 
@@ -48,8 +50,8 @@ summarised in this skill.
 | [`01_routing_table.md`](01_routing_table.md) | Always, first | Measured local capacity (dated), verify-by-reading-errors, route-table format. |
 | [`02_tts_budget.md`](02_tts_budget.md) | Any narration/dialogue/SFX | The MOSS audio roles, ledger discipline, voice locks, the retake rule. |
 | [`03_visual_routes.md`](03_visual_routes.md) | Stills or motion | MOSS-first stills, the no-video-models policy, insert graphics. |
-| [`04_qa_and_delivery.md`](04_qa_and_delivery.md) | Before anything ships | Audio QA, duration verification, provenance audit, git hygiene, delivery notes. |
-| [`05_channel_integrations.md`](05_channel_integrations.md) | Starting a channel job | Per-channel wiring: the reference channel, pixel-art football channel, sci-fi microdrama + tabletop-scenery channels (legacy), stickman. |
+| [`04_qa_and_delivery.md`](04_qa_and_delivery.md) | Before scripting and before any TTS/final cut | Pre-production claims ledger, pre-TTS pronunciation ledger, audio QA, duration verification, provenance audit, git hygiene, delivery notes. |
+| [`05_channel_integrations.md`](05_channel_integrations.md) | Starting a channel job & post-render handoff | Per-channel wiring (reference channel, pixel-art football, sci-fi microdrama + tabletop-scenery legacy, stickman) + downstream channel metadata handoff. |
 
 ## 🛑 When NOT to Use This Skill
 

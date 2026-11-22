@@ -32,6 +32,6 @@ Motion is *made*, not generated:
 
 ## Insert graphics and text — always local
 
-Headless Chromium (`<project>/templates/tools/render.mjs`), the channel's own subtitle script (ass/srt + libass
-burn-in — feed it `moss-transcribe` output directly), pixelkit's 5x7 font stack for pixel
+Headless Chromium (`<project>/templates/tools/render.mjs`), the channel's own subtitle script (`ass`/`srt` + libass
+burn-in — after running a `bible/pronunciation.md` canonical-spelling restoration pass over `moss-transcribe` output whenever respelled dialogue or narration was synthesized, never burning raw phonetic respellings on screen), pixelkit's 5x7 font stack for pixel
 channels, Pillow for one-off fixes. Zero API dependencies; byte-identical re-renders.

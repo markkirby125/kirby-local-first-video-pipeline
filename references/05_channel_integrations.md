@@ -27,8 +27,7 @@ Pre-rule routing was Veo shots via Flow + Gemini TTS dialogue (per-character dia
 ElevenLabs as escape hatch. Those routes are **out of policy now**. Its local floor is
 this skill's: `moss-voice` designs <character A>, <character B>, <character C> timbres offline with permanent
 continuity, `moss-sfx-v2` for airlocks/reactor hums/hull groans, `moss-nano-tts` for
-radio comms and PA announcements, and `moss-transcribe` feeds speaker-tagged `.ass`
-straight into the channel's own subtitle script. Voice locks stay in the project's voice bible. Historical only: a
+radio comms and PA announcements, and `moss-transcribe` produces speaker-tagged `.ass`; where respelled dialogue or narration was synthesized, run a canonical-spelling restoration pass from `bible/pronunciation.md` over that output, then feed the corrected file into the channel's own subtitle script (never burn raw respellings on screen). Voice locks stay in `bible/voices.md`. Historical only: a
 project whose spec still names cloud routes must be migrated to the local suite before
 production. (Same rule as `references/00_dispatcher.md`.)
 
@@ -47,8 +46,8 @@ audits provenance. Thumbnail assists would be MOSS first.
 
 ## Wiring a new channel (checklist)
 
-1. Copy the two templates from `assets/` into the channel repo as `route-table.json` and
-   `tts-ledger.json`; fill the route table
+1. Copy the two JSON templates from `assets/` into the channel repo as `route-table.json` and
+   `tts-ledger.json`, create `bible/claims.md` and `bible/pronunciation.md` where spoken or on-screen factual claims, or spoken proper nouns, apply, and create `bible/voices.md` on channels with narration or character VO (using the inline schemas in `04_qa_and_delivery.md`); fill the route table
    (local engines only; the templates have no cloud fields, and the route table is checked
    by manual audit, while the ledger is checked in code). Delete the `_example_*` keys
    after copying. The two gate scripts stay in
@@ -60,3 +59,7 @@ audits provenance. Thumbnail assists would be MOSS first.
 3. First video: state provenance in the delivery (expected: zero cloud — permanently).
 4. Deviations are not expected; any change of *local* route gets a dated note — the
    drift rule.
+
+## Downstream handoff: channel metadata & off-page entity alignment
+
+Upload-copy and metadata alignment is an external editorial/SEO task outside this local rendering layer. When passing a finished video bundle downstream to the channel's own skill or workflow for upload titles, descriptions, pinned transcript comments, or channel metadata, align entity phrasing for **true, evidence-backed entity claims only** with the owned website's **Entity Identity, Wanted/Unwanted Attributes & Core-First Architecture** ([`kirby-source-context-topical-architect`](../../kirby-source-context-topical-architect/SKILL.md) [`references/module_1_entity_identity_and_attribute_boundaries.md`](../../kirby-source-context-topical-architect/references/module_1_entity_identity_and_attribute_boundaries.md)). Treating YouTube/audio channels as reinforcing brand-entity signals around the owned website's Single Source of Truth (SSOT) is an unverified editorial alignment heuristic (no conversion or ranking guarantee).

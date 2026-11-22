@@ -23,10 +23,12 @@ or re-measured duration (verified with `moss-transcribe`).
 
 ## Voice locks — what the cloud removal bought us
 
-- **One fixed voice per character per season.** The lock lives in the project's voice
-  bible/cast file, not in per-line code: narration locks to the project's narrator
-  reference clip (the reference channel's is a forensic-narrator sample; `Junhao` is the clean
-  fallback preset); each character locks to one `moss-voice` description string.
+- **One fixed voice per character per season.** The lock lives in the project's
+  `bible/voices.md` character/style row (distinct from `bible/claims.md` fact citations
+  and `bible/pronunciation.md` proper-noun respellings; schemas live inline in `04_qa_and_delivery.md`), not in per-line code: narration locks
+  to the project's narrator reference clip (`-r`, recorded in `@tts_ledger`'s `voice` field; the reference channel's
+  is a forensic-narrator sample and `Junhao` is the `-v` fallback preset); each character locks
+  to one `moss-voice` description string.
 - Because every engine is local, acoustic continuity is permanent — the same reference
   clip or description reproduces the same voice in every episode, forever. Provider voice
   drift (the old Gemini/ElevenLabs problem) cannot happen.
