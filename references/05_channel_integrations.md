@@ -25,7 +25,7 @@ ffmpeg; captions instead of TTS. Uses this skill for the provenance audit (perpe
 
 Pre-rule routing was Veo shots via Flow + Gemini TTS dialogue (per-character dialect prompts) with
 ElevenLabs as escape hatch. Those routes are **out of policy now**. Its local floor is
-this skill's: `moss-voice` designs <character A>, <character B>, <character C> timbres offline with permanent
+this skill's: `moss-voice` designs each character's timbre offline with permanent
 continuity, `moss-sfx-v2` for airlocks/reactor hums/hull groans, `moss-nano-tts` for
 radio comms and PA announcements, and `moss-transcribe` produces speaker-tagged `.ass`; where respelled dialogue or narration was synthesized, run a canonical-spelling restoration pass from `bible/pronunciation.md` over that output, then feed the corrected file into the channel's own subtitle script (never burn raw respellings on screen). Voice locks stay in `bible/voices.md`. Historical only: a
 project whose spec still names cloud routes must be migrated to the local suite before
