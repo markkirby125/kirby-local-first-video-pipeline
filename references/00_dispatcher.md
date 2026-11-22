@@ -57,7 +57,7 @@ summarised in this skill.
 
 * **The channel already has a stricter pipeline skill** (a stricter project-specific
   pipeline spec, if the project has one): that spec runs the film; this skill supplies the
-  routing and ledger layer around it.
+  routing and ledger layer around it. For the full channel workflow (story bible, characters, motion), use [Kirby Coded Motion Studio](../../kirby-coded-motion-studio/SKILL.md).
 * **Pure-text or code tasks with no media**: nothing to route.
 
 ## Machine facts this skill depends on (verified on one local machine, 2026-11-07)
@@ -72,4 +72,5 @@ summarised in this skill.
 
 * [Kirby Pixel Character Consistency](../../kirby-pixel-character-consistency/SKILL.md) — sprite identity for the pixel/stickman channels.
 * [Kirby YT Faceless Formula](../../kirby-yt-faceless-formula/SKILL.md) — production pipeline patterns.
+* [Kirby Coded Motion Studio](../../kirby-coded-motion-studio/SKILL.md) — full channel workflow (story bible, characters, code-driven motion).
 * [Kirby Skills Collection](../../kirby-skills-collection/SKILL.md) — master registry.

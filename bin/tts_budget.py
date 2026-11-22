@@ -159,6 +159,8 @@ def main():
             missing.append("file")
         if missing:
             print(f"log needs --{(' --'.join(missing)).replace('_', '-')}", file=sys.stderr); sys.exit(2)
+        if a.file and (a.file.startswith("-") or not a.file.strip()):
+            print("--file must be a real path (not empty and not starting with '-')", file=sys.stderr); sys.exit(2)
         a.result, a.rms_qa = a.result.upper(), a.rms_qa.lower()  # summary/next compare exact "PASS"/"pass"
         if a.result == "PENDING" and a.rms_qa != "pass":
             print("PENDING needs --rms-qa pass; a take that failed QA is a FAIL, not a pending listen-back", file=sys.stderr)
