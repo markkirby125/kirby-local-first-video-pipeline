@@ -48,7 +48,7 @@
   - [ ] Post-synthesis `moss-transcribe` proper-noun check passed and canonical spelling restored on captions/subtitles.
   - [ ] Every engine in the delivery is named in the route table — nothing outside the
     local suite (the ledger cannot even log a cloud engine; see `02`).
-  - [ ] Every take in the cut has `rms_qa: pass` in the ledger.
+  - [ ] Every take in the cut has `result: PASS` and `rms_qa: pass` in the ledger, and `summary` shows `unresolved_pending_lines: []` (a PENDING take cannot ship).
   - [ ] Narration durations verified against the script via `moss-transcribe`.
 
 ## Git hygiene (microdrama-channel rules, house-wide here)
@@ -60,4 +60,4 @@
 
 ## Delivery note (per video)
 
-State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
+State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.

@@ -54,6 +54,23 @@ def today(entries, date):
     return [e for e in entries if e.get("date", "").startswith(date)]
 
 
+def is_pending(e):
+    # PENDING (human listen-back) counts only with rms_qa pass; PENDING with a failed QA is a failure
+    return e.get("result") == "PENDING" and e.get("rms_qa") == "pass"
+
+
+def unresolved_pending(entries):
+    """Lines with a PENDING take and no later PASS take, across all dates (so a pending take never ages out)."""
+    out = set()
+    for e in entries:
+        line = e.get("line", "?")
+        if is_pending(e):
+            out.add(line)
+        elif e.get("result") == "PASS" and e.get("rms_qa") == "pass":
+            out.discard(line)
+    return sorted(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("ledger")
@@ -86,12 +103,15 @@ def main():
         for e in day:
             eng = e.get("engine", "?")
             per_engine[eng] = per_engine.get(eng, 0) + 1
+            if is_pending(e):
+                continue
             if e.get("result") != "PASS" or e.get("rms_qa") != "pass":
                 fails += 1
                 fail_lines[e.get("line", "?")] = fail_lines.get(e.get("line", "?"), 0) + 1
         print(json.dumps({
             "date": a.date, "takes": len(day), "by_engine": per_engine,
             "qa_failures": fails,
+            "unresolved_pending_lines": unresolved_pending(entries),
             "retake_rule_lines": sorted(l for l, n in fail_lines.items() if n >= RETAKE_LIMIT),
             "policy": "local-only; cloud engines rejected by log"}, indent=2))
         return
@@ -101,15 +121,21 @@ def main():
             print("next needs LINE_ID", file=sys.stderr); sys.exit(2)
         engine = ROLE_ENGINE[a.role]
         line_today = [e for e in day if e.get("line") == a.line_id]
-        fails = sum(1 for e in line_today if e.get("engine") == engine and e.get("result") != "PASS")
-        note = None
+        mine = [e for e in line_today if e.get("engine") == engine]
+        pending = a.line_id in unresolved_pending(entries)
+        fails = sum(1 for e in mine if not is_pending(e) and (e.get("result") != "PASS" or e.get("rms_qa") != "pass"))
+        notes = []
         if fails >= RETAKE_LIMIT:
-            note = ("retake rule hit: change the input (text, voice description, reference clip), "
-                    "not the engine - re-rolls are free, identical inputs are not")
+            notes.append("retake rule hit: change the input (text, voice description, reference clip), "
+                         "not the engine - re-rolls are free, identical inputs are not")
         elif fails:
-            note = f"{fails} failed take(s) logged today for this line on {engine}"
+            notes.append(f"{fails} failed take(s) logged today for this line on {engine}")
+        if pending:
+            notes.append("a PENDING take (human listen-back) is unresolved for this line, on any date: log a later PASS take to resolve it")
+        note = "; ".join(notes) or None
         print(json.dumps({"line": a.line_id, "role": a.role, "engine": engine,
                           "takes_today": len(line_today), "fails_today": fails,
+                          "pending_unresolved": pending,
                           "note": note,
                           "engine_source": "house default per role; the project's route table wins where it differs"},
                          indent=2))
@@ -134,6 +160,9 @@ def main():
         if missing:
             print(f"log needs --{(' --'.join(missing)).replace('_', '-')}", file=sys.stderr); sys.exit(2)
         a.result, a.rms_qa = a.result.upper(), a.rms_qa.lower()  # summary/next compare exact "PASS"/"pass"
+        if a.result == "PENDING" and a.rms_qa != "pass":
+            print("PENDING needs --rms-qa pass; a take that failed QA is a FAIL, not a pending listen-back", file=sys.stderr)
+            sys.exit(2)
         entry = {"date": a.date, "line": a.line_id, "engine": a.engine,
                  "voice": a.voice, "take": a.take, "result": a.result,
                  "rms_qa": a.rms_qa}

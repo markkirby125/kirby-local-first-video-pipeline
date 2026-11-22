@@ -58,7 +58,7 @@ where the project's route table differs, the route table wins);
 `tts.scratch`, `subject` to `tts.character_voice`, `sfx` to `sfx.primary`, `ui-sfx` to
 `sfx.rapid`. Full `log` form (every take, pass or fail):
 `bin/tts_budget.py tts-ledger.json log --line-id ep02-014 --engine moss-voice --voice "<description>" --take 1 --result PASS --rms-qa pass --file voice/ep02/014-t1.wav`
-(a failed attempt uses `--result FAIL --rms-qa fail` and may omit `--file`).
+(a failed attempt uses `--result FAIL --rms-qa fail` and may omit `--file`; a take held for human listen-back per `04_qa_and_delivery.md` uses `--result PENDING --rms-qa pass`, which `summary` and `next` report as unresolved on any date and the retake rule does not count; a later PASS take on the same line resolves it, and `log` rejects PENDING with a failed `--rms-qa`).
 `log` **refuses to record a cloud engine** — the out-of-policy rule is enforced in code,
 not in memory.
 
