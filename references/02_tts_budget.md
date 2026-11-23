@@ -37,7 +37,8 @@ or re-measured duration (verified with `moss-transcribe`).
   git, like media; only its location and date go in `bible/voices.md` prose beside the lock
   (outside the table schema). No record, no clone: never clone a real person
   without it; use a preset (`-v`) instead. A clip of unknown origin counts as a real person's,
-  and a `moss-voice` description never names or imitates a real person. The gate covers
+  and a `moss-voice` description never names or imitates a real person
+  (a quoted real person gets an unrelated designed timbre). The gate covers
   existing locks too, the reference channel's narrator clip included: until its origin and
   consent record are noted, narration uses the `-v` preset.
 - **Retake rule:** two failed takes on a line in one day ⇒ change the input (text, voice

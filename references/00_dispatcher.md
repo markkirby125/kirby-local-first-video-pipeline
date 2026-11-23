@@ -14,7 +14,7 @@ summarised in this skill.
 | Script / shot list / narration text | Agent, no media generated; verifiable claims logged in `bible/claims.md` before scripting (re-checked before TTS), spoken proper nouns in `bible/pronunciation.md` before TTS |
 | Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`; consent gate in `02_tts_budget.md`) or a preset (`-v Junhao`) |
 | Character / subject / expert VO | **moss-voice** — GPU 1.7B, 24 kHz mono; zero-reference timbre from a text description (`-i`) |
-| Scratch pass (optional) | **moss-nano-tts** (`--role scratch`, route-table `tts.scratch`); finals replace it. Legacy kokoro only where a project already uses it (`02_tts_budget.md`) |
+| Scratch pass (optional) | **moss-nano-tts** (ledger role `scratch`: `bin/tts_budget.py LEDGER next LINE_ID --role scratch`; route-table `tts.scratch`); finals replace it. Legacy kokoro only where a project already uses it (`02_tts_budget.md`) |
 | Cinematic SFX & stingers | **moss-sfx-v2** — 48 kHz stereo, up to 30 s (paper rustles, gavel strikes, document stamps, monitor bleeps) |
 | Rapid / mechanical UI SFX | **moss-sfx-v2** only (policy 2026-11-13). `sa3-sfx` is not used for SFX and is not a fallback; if `moss-sfx-v2` fails, stop and report to Paul. |
 | Timestamps, diarization, duration QA | **moss-transcribe** — 0.9B ASR + diarization, `.ass`/`.srt` with 10 ms timestamps |

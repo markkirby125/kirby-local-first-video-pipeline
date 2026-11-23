@@ -21,7 +21,7 @@
 - Pre-production & pre-TTS gate checklist:
   - [ ] Pre-production `bible/claims.md` ledger populated & independently verified for all spoken/visual real-world stats and factual claims.
   - [ ] Pre-TTS `bible/pronunciation.md` respelling heuristics logged & approved for every spoken proper noun.
-  - [ ] Consent record location and date noted in `bible/voices.md` for every `-r` reference clip of a real or unknown-origin voice (consent gate, `02_tts_budget.md`).
+  - [ ] Consent record location and date noted in `bible/voices.md` for every `-r` reference clip of a real person's voice (consent gate, `02_tts_budget.md`).
 
 ## Audio
 

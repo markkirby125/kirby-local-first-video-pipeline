@@ -1,6 +1,6 @@
 ---
 name: kirby-local-first-video-pipeline
-description: Standard operating procedure for producing narration-led video on a 100% local stack - MOSS audio suite (moss-nano-tts narration, moss-voice character VO, moss-sfx-v2 sound design (sole SFX tool), moss-transcribe verification), MOSS MCP stills, coded ffmpeg/PIL assembly. Cloud TTS (Gemini, ElevenLabs) and generative video models are OUT OF POLICY in this pipeline - never called, no gates, no quotas. Use for any video task on a local-only stack.
+description: Standard operating procedure for producing narration-led video on a 100% local stack - MOSS audio suite (moss-nano-tts narration, moss-voice character VO, moss-sfx-v2 sound design (sole SFX tool), moss-transcribe verification), MOSS MCP stills, coded ffmpeg/PIL assembly. Cloud TTS (Gemini, ElevenLabs) and generative video models are OUT OF POLICY in this pipeline - never called, no budget gates, no quotas. Use for any video task on a local-only stack.
 category: technique
 triggers: [local-first, local-only, video-pipeline, narration, moss-nano-tts, moss-voice, moss-sfx-v2, moss-transcribe, moss-image, no-cloud-tts, kokoro]
 risk: unverified

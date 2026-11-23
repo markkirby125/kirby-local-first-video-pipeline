@@ -4,7 +4,7 @@
 > (`moss-nano-tts` narration · `moss-voice` character VO · `moss-sfx-v2` (only SFX tool)
 > sound design · `moss-transcribe` verification), MOSS MCP stills, coded ffmpeg/PIL
 > assembly. Cloud TTS (Gemini, ElevenLabs) and generative video models are OUT OF
-> POLICY in this pipeline — never called, no gates, no quotas.**
+> POLICY in this pipeline — never called, no budget gates, no quotas.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Architecture: Hollow Shell](https://img.shields.io/badge/Architecture-Hollow%20Shell-brightgreen.svg)](SKILL.md)
