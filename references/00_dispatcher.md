@@ -3,8 +3,8 @@
 SOP for producing narration-led video across the local production stack under one doctrine:
 **local apps only.** Every stage runs on models and tools installed on this machine —
 there is no cloud column, no budget gate, and no quota to protect. Updated 2026-11-07,
-when cloud TTS (Gemini, ElevenLabs) and generative video models were removed from policy
-house-wide. The routes below were verified on the author's machine on 2026-11-07 and are
+when cloud TTS (Gemini, ElevenLabs) and generative video models were removed from this
+pipeline's policy. The routes below were verified on the author's machine on 2026-11-07 and are
 summarised in this skill.
 
 ## The doctrine in one table
@@ -23,10 +23,12 @@ summarised in this skill.
 | Assembly, repair, packaging | ffmpeg + PIL overlays — **coded motion only, no video models** |
 | QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
 
-## 🚫 Out of policy (removed 2026-11-07, house-wide)
+## 🚫 Out of policy in this pipeline (removed 2026-11-07)
 
-* **Cloud TTS — Gemini, ElevenLabs**: never called, for any reason. There is no budget
+* **Cloud TTS — Gemini, ElevenLabs**: never called inside this production pipeline (the narration
+  and voice-ledger steps it controls), for any reason. There is no budget
   gate left to approve them; a take that fails locally is re-rolled or re-voiced locally.
+  Third-party tools outside this pipeline, such as NotebookLM Audio Overviews, are out of its scope and governed by their own skills.
 * **Generative video models — cloud (Flow/Veo) and local (LTX-Video)**: not declared in
   any route table. Motion is coded (ffmpeg/PIL) only.
 * The two channels that predate the rule (the sci-fi microdrama and tabletop-scenery channels) are noted as history

@@ -51,7 +51,7 @@
   - [ ] Every take in the cut has `result: PASS` and `rms_qa: pass` in the ledger, and `summary` shows `unresolved_pending_lines: []` (a PENDING take cannot ship).
   - [ ] Narration durations verified against the script via `moss-transcribe`.
 
-## Git hygiene (microdrama-channel rules, house-wide here)
+## Git hygiene (microdrama-channel rules, applied here)
 
 - Commit text only: scripts, shot lists, ledgers, route tables, upload text. Media
   (frames, clips, audio, exports) stays out of git and is backed up separately.
