@@ -21,7 +21,7 @@
 - Pre-production & pre-TTS gate checklist:
   - [ ] Pre-production `bible/claims.md` ledger populated & independently verified for all spoken/visual real-world stats and factual claims.
   - [ ] Pre-TTS `bible/pronunciation.md` respelling heuristics logged & approved for every spoken proper noun.
-  - [ ] Consent record location and date noted in `bible/voices.md` for every `-r` reference clip of a real person's voice (consent gate, `02_tts_budget.md`).
+  - [ ] Consent record ID and date noted as prose under the `bible/voices.md` table (never a new column or row) for every `-r` reference clip of a real person's voice or of unknown origin (consent gate, `02_tts_budget.md`).
 
 ## Audio
 
@@ -61,4 +61,4 @@
 
 ## Delivery note (per video)
 
-State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
+State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus the voice-clone consent record and post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.

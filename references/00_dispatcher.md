@@ -14,19 +14,19 @@ summarised in this skill.
 | Script / shot list / narration text | Agent, no media generated; verifiable claims logged in `bible/claims.md` before scripting (re-checked before TTS), spoken proper nouns in `bible/pronunciation.md` before TTS |
 | Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`; consent gate in `02_tts_budget.md`) or a preset (`-v Junhao`) |
 | Character / subject / expert VO | **moss-voice** — GPU 1.7B, 24 kHz mono; zero-reference timbre from a text description (`-i`) |
-| Scratch pass (optional) | **moss-nano-tts** (ledger role `scratch`: `bin/tts_budget.py LEDGER next LINE_ID --role scratch`; route-table `tts.scratch`); finals replace it. Legacy kokoro only where a project already uses it (`02_tts_budget.md`) |
+| Scratch pass (optional) | **moss-nano-tts** (`next` role `scratch`: `bin/tts_budget.py LEDGER next LINE_ID --role scratch`; route-table `tts.scratch`); finals replace it. Legacy kokoro only where a project already uses it (`02_tts_budget.md`) |
 | Cinematic SFX & stingers | **moss-sfx-v2** — 48 kHz stereo, up to 30 s (paper rustles, gavel strikes, document stamps, monitor bleeps) |
 | Rapid / mechanical UI SFX | **moss-sfx-v2** only (policy 2026-11-13). `sa3-sfx` is not used for SFX and is not a fallback; if `moss-sfx-v2` fails, stop and report to Paul. |
 | Timestamps, diarization, duration QA | **moss-transcribe** — 0.9B ASR + diarization, `.ass`/`.srt` with 10 ms timestamps |
 | Stills, plates, thumbnails | **MOSS MCP** (`moss-image:*` → SwarmUI on its default local port) — unlimited |
 | Insert graphics, captions, subs | Chromium `render.mjs` / the channel's own subtitle script / pixelkit / PIL |
 | Assembly, repair, packaging | ffmpeg + PIL overlays — **coded motion only, no video models** |
-| QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
+| QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + pre-TTS voice-clone consent record (`bible/voices.md`) + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
 
 ## 🚫 Out of policy in this pipeline (removed 2026-11-07)
 
-* **Cloud TTS — Gemini, ElevenLabs**: never called inside this production pipeline (the narration
-  and voice-ledger steps it controls), for any reason. There is no budget
+* **Cloud TTS — Gemini, ElevenLabs**: never called for any audio step in this pipeline (narration,
+  scratch, character VO, SFX), for any reason. There is no budget
   gate left to approve them; a take that fails locally is re-rolled or re-voiced locally.
 * **Generative video models — cloud (Flow/Veo) and local (LTX-Video)**: not declared in
   any route table. Motion is coded (ffmpeg/PIL) only.
@@ -46,7 +46,7 @@ audio in this pipeline.
 | `@route_table` | Data (per project) | Stage→engine choices, declared up front; the only place routing is decided. Template in `assets/route-table.template.json` (Markdown bible schemas for `bible/claims.md`, `bible/pronunciation.md`, and `bible/voices.md` live inline in `04_qa_and_delivery.md`). Cloud engines are never declared. |
 | `@tts_ledger` | Data (per project, committed) | Every audio generation: date, engine, voice/clone ref, line id, take, QA result, file path. Appended immediately after QA, with result and rms_qa recorded; audited after. Template in `assets/tts-ledger.template.json`. |
 | `@retake_rule` | Rule | Two failed takes on a line in one day ⇒ change the input (text, voice description, reference clip), never the policy. |
-| `@qa_gates` | Checklist | Required pre-production `bible/claims.md` fact/claim ledger; required pre-TTS `bible/pronunciation.md` proper-noun respelling ledger (for spoken proper nouns); post-synthesis `moss-transcribe` proper-noun check; audio QA (`bin/audio_qa.py`) on every take; `moss-transcribe` duration verification against the script; the project's own visual review gate on every video. |
+| `@qa_gates` | Checklist | Required pre-production `bible/claims.md` fact/claim ledger; required pre-TTS `bible/pronunciation.md` proper-noun respelling ledger (for spoken proper nouns); pre-TTS voice-clone consent record (`bible/voices.md`); post-synthesis `moss-transcribe` proper-noun check; audio QA (`bin/audio_qa.py`) on every take; `moss-transcribe` duration verification against the script; the project's own visual review gate on every video. |
 | `@claims_ledger` | Data (per project, `bible/claims.md`) | Primary-source table (`\| claim \| primary_source_url \| quoted_passage \| verified_by \| verified_date \|`) backing every factual claim before scripting/TTS. Schema defined inline in `04_qa_and_delivery.md`. |
 | `@pronunciation_ledger` | Data (per project, `bible/pronunciation.md`) | Engine-readable proper-noun respelling table (`\| proper_noun \| respelling \| approved_by \| notes \|`, distinct from `bible/voices.md`) before TTS. Schema defined inline in `04_qa_and_delivery.md`. |
 

@@ -34,7 +34,7 @@ or re-measured duration (verified with `moss-transcribe`).
   drift (the old Gemini/ElevenLabs problem) cannot happen.
 - **Consent gate for cloned voices.** A `-r` reference clip taken from a real person's voice
   needs that person's written consent before it is used. The consent record stays out of
-  git, like media; only its location and date go in `bible/voices.md` prose beside the lock
+  git, like media; only an opaque record ID and date go in `bible/voices.md` prose beside the lock
   (outside the table schema). No record, no clone: never clone a real person
   without it; use a preset (`-v`) instead. A clip of unknown origin counts as a real person's,
   and a `moss-voice` description never names or imitates a real person

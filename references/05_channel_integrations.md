@@ -47,7 +47,7 @@ audits provenance. Thumbnail assists would be MOSS first.
 ## Wiring a new channel (checklist)
 
 1. Copy the two JSON templates from `assets/` into the channel repo as `route-table.json` and
-   `tts-ledger.json`, create `bible/claims.md` and `bible/pronunciation.md` where spoken or on-screen factual claims, or spoken proper nouns, apply, and create `bible/voices.md` on channels with narration or character VO (using the inline schemas in `04_qa_and_delivery.md`); fill the route table
+   `tts-ledger.json`, create `bible/claims.md` and `bible/pronunciation.md` where spoken or on-screen factual claims, or spoken proper nouns, apply, and create `bible/voices.md` on channels with narration or character VO (using the inline schemas in `04_qa_and_delivery.md`) and record the consent status for any `-r` clip; fill the route table
    (local engines only; the templates have no cloud fields, and the route table is checked
    by manual audit, while the ledger is checked in code). Delete the `_example_*` keys
    after copying. The two gate scripts stay in
