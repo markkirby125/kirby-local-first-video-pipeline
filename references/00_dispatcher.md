@@ -21,7 +21,7 @@ summarised in this skill.
 | Stills, plates, thumbnails | **MOSS MCP** (`moss-image:*` → SwarmUI on its default local port) — unlimited |
 | Insert graphics, captions, subs | Chromium `render.mjs` / the channel's own subtitle script / pixelkit / PIL |
 | Assembly, repair, packaging | ffmpeg + PIL overlays — **coded motion only, no video models** |
-| QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + pre-TTS voice-clone consent record (`bible/voices.md`) + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
+| QA | Pre-production `bible/claims.md` ledger + pre-TTS `bible/pronunciation.md` approval + pre-TTS voice-clone consent notation for any `-r` clip (record ID + date in `bible/voices.md`; the record stays out of git) + post-synthesis `moss-transcribe` proper-noun & duration verification + per-second RMS audio QA (`bin/audio_qa.py`) |
 
 ## 🚫 Out of policy in this pipeline (removed 2026-11-07)
 
@@ -46,7 +46,7 @@ audio in this pipeline.
 | `@route_table` | Data (per project) | Stage→engine choices, declared up front; the only place routing is decided. Template in `assets/route-table.template.json` (Markdown bible schemas for `bible/claims.md`, `bible/pronunciation.md`, and `bible/voices.md` live inline in `04_qa_and_delivery.md`). Cloud engines are never declared. |
 | `@tts_ledger` | Data (per project, committed) | Every audio generation: date, engine, voice/clone ref, line id, take, QA result, file path. Appended immediately after QA, with result and rms_qa recorded; audited after. Template in `assets/tts-ledger.template.json`. |
 | `@retake_rule` | Rule | Two failed takes on a line in one day ⇒ change the input (text, voice description, reference clip), never the policy. |
-| `@qa_gates` | Checklist | Required pre-production `bible/claims.md` fact/claim ledger; required pre-TTS `bible/pronunciation.md` proper-noun respelling ledger (for spoken proper nouns); pre-TTS voice-clone consent record (`bible/voices.md`); post-synthesis `moss-transcribe` proper-noun check; audio QA (`bin/audio_qa.py`) on every take; `moss-transcribe` duration verification against the script; the project's own visual review gate on every video. |
+| `@qa_gates` | Checklist | Required pre-production `bible/claims.md` fact/claim ledger; required pre-TTS `bible/pronunciation.md` proper-noun respelling ledger (for spoken proper nouns); pre-TTS voice-clone consent notation for any `-r` clip (record ID + date in `bible/voices.md`; the record stays out of git); post-synthesis `moss-transcribe` proper-noun check; audio QA (`bin/audio_qa.py`) on every take; `moss-transcribe` duration verification against the script; the project's own visual review gate on every video. |
 | `@claims_ledger` | Data (per project, `bible/claims.md`) | Primary-source table (`\| claim \| primary_source_url \| quoted_passage \| verified_by \| verified_date \|`) backing every factual claim before scripting/TTS. Schema defined inline in `04_qa_and_delivery.md`. |
 | `@pronunciation_ledger` | Data (per project, `bible/pronunciation.md`) | Engine-readable proper-noun respelling table (`\| proper_noun \| respelling \| approved_by \| notes \|`, distinct from `bible/voices.md`) before TTS. Schema defined inline in `04_qa_and_delivery.md`. |
 

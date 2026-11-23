@@ -61,4 +61,4 @@
 
 ## Delivery note (per video)
 
-State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus the voice-clone consent record and post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
+State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus the voice-clone consent record ID and date (for any `-r` clip) and post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
