@@ -5,7 +5,7 @@ gate and no quota to protect:
 
 ```text
 NARRATION / HOST        moss-nano-tts    (CPU, 48 kHz stereo) — voice clone from a locked
-                                           3–5 s reference clip (-r) or a preset (-v Junhao)
+                                           short reference clip (-r) or a preset (-v Junhao)
 CHARACTER / SUBJECT VO  moss-voice       (GPU 1.7B, 24 kHz mono) — zero-reference timbre
                                            from a text description (-i)
 CINEMATIC SFX           moss-sfx-v2      (48 kHz stereo, ≤30 s) — paper rustles, gavel

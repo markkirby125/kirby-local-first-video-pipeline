@@ -55,7 +55,7 @@
 ## Git hygiene (microdrama-channel rules, applied here)
 
 - Commit text only: scripts, shot lists, ledgers, route tables, upload text. Media
-  (frames, clips, audio, exports) stays out of git and is backed up separately, as is the typed
+  (frames, clips, audio, exports) stays out of git and is backed up separately, as is the written
   consent record's content: only its opaque ID and date appear in committed text.
 - Commit messages plain, short, present tense. No co-author, "Generated with", or
   session-attribution lines of any kind.
