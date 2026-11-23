@@ -36,7 +36,7 @@ or re-measured duration (verified with `moss-transcribe`).
   needs that person's written consent before it is used. The consent record stays out of
   git, like media; only an opaque record ID (no names) and date go in prose under the `bible/voices.md` table
   (never a new column or row). No record, no clone: never clone a real person
-  without it; use a preset (`-v`) instead. A clip of unknown origin counts as a real person's,
+  without it; use a preset (`-v`) instead. The operator's own voice counts as self-consented once the operator writes a short consent statement for their own clip and notes its record ID and date the same way (never for a third party who sounds similar). A clip of unknown origin counts as a real person's,
   and a `moss-voice` description never names or imitates a real person
   (a quoted real person gets an unrelated designed timbre). The gate covers
   existing locks too, the reference channel's narrator clip included: until its origin and
