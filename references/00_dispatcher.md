@@ -28,12 +28,13 @@ summarised in this skill.
 * **Cloud TTS — Gemini, ElevenLabs**: never called inside this production pipeline (the narration
   and voice-ledger steps it controls), for any reason. There is no budget
   gate left to approve them; a take that fails locally is re-rolled or re-voiced locally.
-  Third-party tools outside this pipeline, such as NotebookLM Audio Overviews, are out of its scope and governed by their own skills.
 * **Generative video models — cloud (Flow/Veo) and local (LTX-Video)**: not declared in
   any route table. Motion is coded (ffmpeg/PIL) only.
 * The two channels that predate the rule (the sci-fi microdrama and tabletop-scenery channels) are noted as history
   in `05_channel_integrations.md`. Historical only: a project whose spec still names cloud
   routes must be migrated to the local suite before production.
+
+Third-party tools outside this pipeline (for example NotebookLM Audio Overviews) are for separate deliverables only, governed by their own skills; their audio is never used as narration or character voice in this pipeline.
 
 ## 🏷️ Canonical Asset Tag Register
 
