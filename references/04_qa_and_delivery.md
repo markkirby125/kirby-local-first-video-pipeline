@@ -21,7 +21,7 @@
 - Pre-production & pre-TTS gate checklist:
   - [ ] Pre-production `bible/claims.md` ledger populated & independently verified for all spoken/visual real-world stats and factual claims.
   - [ ] Pre-TTS `bible/pronunciation.md` respelling heuristics logged & approved for every spoken proper noun.
-  - [ ] Consent record ID and date noted as prose under the `bible/voices.md` table (never a new column or row) for every `-r` reference clip of a real person's voice or of unknown origin (consent gate, `02_tts_budget.md`).
+  - [ ] Opaque consent record ID (no names) and date noted as prose under the `bible/voices.md` table (never a new column or row) for every `-r` reference clip of a real person's voice or of unknown origin (consent gate, `02_tts_budget.md`).
 
 ## Audio
 
@@ -55,10 +55,11 @@
 ## Git hygiene (microdrama-channel rules, applied here)
 
 - Commit text only: scripts, shot lists, ledgers, route tables, upload text. Media
-  (frames, clips, audio, exports) stays out of git and is backed up separately.
+  (frames, clips, audio, exports) stays out of git and is backed up separately, as is the typed
+  consent record's content: only its opaque ID and date appear in committed text.
 - Commit messages plain, short, present tense. No co-author, "Generated with", or
   session-attribution lines of any kind.
 
 ## Delivery note (per video)
 
-State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus the voice-clone consent record ID and date (for any `-r` clip) and post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
+State, honestly: route table used (and any dated deviations), required pre-production `bible/claims.md` and `bible/pronunciation.md` ledger sign-off plus the voice-clone consent record ID and date (for a real person's or unknown-origin `-r` clip) and post-synthesis `moss-transcribe` proper-noun check, ledger summary (takes per engine, retakes, QA failures, `unresolved_pending_lines: []`), **cloud usage: zero — and out of policy, not merely unspent**, QA gate results with the sampling actually used, and anything re-voiced or re-rolled plus why. A delivery that cannot state its provenance is not done.
