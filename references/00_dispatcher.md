@@ -4,7 +4,7 @@ SOP for producing narration-led video across the local production stack under on
 **local apps only.** Every stage runs on models and tools installed on this machine —
 there is no cloud column, no budget gate, and no quota to protect. Updated 2026-11-07,
 when cloud TTS (Gemini, ElevenLabs) and generative video models were removed from this
-pipeline's policy. The routes below were verified on the author's machine on 2026-11-07 and are
+pipeline's policy (wording narrowed on 2026-11-23: the ban covers this pipeline only). The routes below were verified on the author's machine on 2026-11-07 and are
 summarised in this skill.
 
 ## The doctrine in one table
@@ -12,7 +12,7 @@ summarised in this skill.
 | Stage | Route (always local, unlimited) |
 |---|---|
 | Script / shot list / narration text | Agent, no media generated; verifiable claims logged in `bible/claims.md` before scripting (re-checked before TTS), spoken proper nouns in `bible/pronunciation.md` before TTS |
-| Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`) or a preset (`-v Junhao`) |
+| Narration & host VO | **moss-nano-tts** — CPU ONNX, 48 kHz stereo, ~2.4 s per 5 s take; voice clone from a 3–5 s reference clip (`-r`; consent gate in `02_tts_budget.md`) or a preset (`-v Junhao`) |
 | Character / subject / expert VO | **moss-voice** — GPU 1.7B, 24 kHz mono; zero-reference timbre from a text description (`-i`) |
 | Scratch pass (optional) | **moss-nano-tts** (`--role scratch`, route-table `tts.scratch`); finals replace it. Legacy kokoro only where a project already uses it (`02_tts_budget.md`) |
 | Cinematic SFX & stingers | **moss-sfx-v2** — 48 kHz stereo, up to 30 s (paper rustles, gavel strikes, document stamps, monitor bleeps) |
@@ -34,7 +34,10 @@ summarised in this skill.
   in `05_channel_integrations.md`. Historical only: a project whose spec still names cloud
   routes must be migrated to the local suite before production.
 
-Third-party tools outside this pipeline (for example NotebookLM Audio Overviews) are for separate deliverables only, governed by their own skills; their audio is never used as narration or character voice in this pipeline.
+Third-party tools outside this pipeline (for example NotebookLM Audio Overviews, routed by
+[`kirby-off-page-seo`](../../kirby-off-page-seo/SKILL.md) Module 26) are for separate
+deliverables only; their audio is never used as narration, character voice or any other
+audio in this pipeline.
 
 ## 🏷️ Canonical Asset Tag Register
 
