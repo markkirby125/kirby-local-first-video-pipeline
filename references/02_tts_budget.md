@@ -33,11 +33,13 @@ or re-measured duration (verified with `moss-transcribe`).
   clip or description reproduces the same voice in every episode, forever. Provider voice
   drift (the old Gemini/ElevenLabs problem) cannot happen.
 - **Consent gate for cloned voices.** A `-r` reference clip taken from a real person's voice
-  needs that person's written consent before it is used. Keep the consent record
-  with the project's files and note where it is, with its date, in `bible/voices.md` prose
-  beside the lock (outside the table schema). No record, no clone: never clone a real person
+  needs that person's written consent before it is used. The consent record stays out of
+  git, like media; only its location and date go in `bible/voices.md` prose beside the lock
+  (outside the table schema). No record, no clone: never clone a real person
   without it; use a preset (`-v`) instead. A clip of unknown origin counts as a real person's,
-  and a `moss-voice` description never names or imitates a real person.
+  and a `moss-voice` description never names or imitates a real person. The gate covers
+  existing locks too, the reference channel's narrator clip included: until its origin and
+  consent record are noted, narration uses the `-v` preset.
 - **Retake rule:** two failed takes on a line in one day ⇒ change the input (text, voice
   description, reference clip), not the policy. Cloud re-rolls are not an exit; there is
   no ladder to climb.
