@@ -10,6 +10,8 @@ tags: [kirby, ai-agent, workflow]
 
 # SOP: Local-First Video Pipeline (100% local apps)
 
+> **SUPERSEDED IN PART, 2026-11-24.** `moss-nano-tts` and `moss-voice` are not installed: you retired them on 2026-11-11 (quality rejected; see `~/AI_projects/youtube/CLAUDE.md`, Master Audio Policy, rule 2), and `~/moss-nano` was archived at `~/AI_projects/archive/retired-2026-11-23/moss-nano`. The single TTS engine is now `moss-tts` (GPU). Every `moss-nano-tts` or `moss-voice` route, CPU/VRAM figure and timing below describes the retired engines as of 2026-11-07 and does not apply to `moss-tts`. `moss-sfx-v2`, `moss-transcribe` and `moss-image` are unchanged and installed. When this file and `youtube/CLAUDE.md` disagree, `youtube/CLAUDE.md` wins.
+
 **To execute this skill, you MUST first read the dispatcher instructions located at:**
 `references/00_dispatcher.md`
 

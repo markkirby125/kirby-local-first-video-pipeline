@@ -1,5 +1,7 @@
 # Dispatcher: Local-First Video Pipeline
 
+> **SUPERSEDED IN PART, 2026-11-24:** the narration, character-voice and scratch routes below name `moss-nano-tts` and `moss-voice`, which were retired on 2026-11-11 and are not installed. Use `moss-tts` for all TTS and take its rules from `~/AI_projects/youtube/CLAUDE.md` (Master Audio Policy). The CPU/VRAM and timing figures below belong to the retired engines. `moss-sfx-v2`, `moss-transcribe` and `moss-image` are unchanged.
+
 SOP for producing narration-led video across the local production stack under one doctrine:
 **local apps only.** Every stage runs on models and tools installed on this machine —
 there is no cloud column, no budget gate, and no quota to protect. Updated 2026-11-07,
